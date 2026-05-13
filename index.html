@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Aditya A M — Technical Lead & Full-Stack Engineer. 9+ years building scalable web applications, AI agent pipelines, and production-grade systems in the JavaScript/TypeScript ecosystem." />
+<meta name="author" content="Aditya A M" />
+<meta property="og:title" content="Aditya Bharighat — Technical Lead & Full-Stack Engineer" />
+<meta property="og:description" content="Architecting scalable web applications, AI agent pipelines, and shipping production-grade systems." />
+<meta property="og:url" content="https://adityabharighat.com" />
+<title>Aditya Bharighat — Technical Lead & Full-Stack Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-elev: #11111a;
+    --bg-card: #15151f;
+    --border: #1f1f2e;
+    --border-hover: #2a2a3f;
+    --text: #e6e6f0;
+    --text-dim: #9090a8;
+    --text-faint: #5a5a72;
+    --accent: #7c5cff;
+    --accent-2: #00d4ff;
+    --accent-warm: #ffc832;
+    --success: #00e599;
+    --gradient: linear-gradient(135deg, #7c5cff 0%, #00d4ff 100%);
+    --gradient-warm: linear-gradient(135deg, #ffc832 0%, #ff6b6b 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection { background: var(--accent); color: white; }
+
+  /* Animated background */
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .bg-glow::before, .bg-glow::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+  }
+  .bg-glow::before {
+    background: var(--accent);
+    top: -200px;
+    left: -100px;
+    animation: drift1 20s ease-in-out infinite;
+  }
+  .bg-glow::after {
+    background: var(--accent-2);
+    bottom: -200px;
+    right: -100px;
+    animation: drift2 25s ease-in-out infinite;
+  }
+  @keyframes drift1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(100px, 80px); }
+  }
+  @keyframes drift2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-80px, -60px); }
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 2rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 10, 15, 0.7);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gradient);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    padding: 6rem 0;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent-2);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 3rem;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
+  }
+  .hero-inner {
+    width: 100%;
+  }
+  .hero-greeting {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-2);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero h2 {
+    font-size: clamp(1.5rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+  .hero h2 .gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-blurb {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s forwards;
+  }
+  .btn {
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--gradient);
+    color: white;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(124, 92, 255, 0.35);
+  }
+  .btn-ghost {
+    color: var(--text);
+    border-color: var(--border-hover);
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    border-color: var(--accent-2);
+    color: var(--accent-2);
+    transform: translateY(-2px);
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    color: var(--text-faint);
+    font-size: 0.9rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.5s forwards;
+  }
+  .hero-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 12px var(--success);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+  }
+  .about-text strong { color: var(--text); font-weight: 600; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.25s ease;
+  }
+  .stat:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .stat-num {
+    font-size: 2.25rem;
+    font-weight: 800;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  /* Experience */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-2), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0.6rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.15);
+  }
+  .timeline-role {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--text);
+  }
+  .timeline-company {
+    color: var(--accent-2);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-meta {
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 1rem;
+  }
+  .timeline-bullets {
+    list-style: none;
+    padding: 0;
+  }
+  .timeline-bullets li {
+    color: var(--text-dim);
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+  }
+  .timeline-bullets li::before {
+    content: '▹';
+    color: var(--accent-2);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: all 0.25s ease;
+  }
+  .skill-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+  }
+  .skill-title {
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-2);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .skill-tag {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    transition: all 0.2s;
+  }
+  .skill-tag:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.75rem;
+  }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-5px);
+  }
+  .project-card:hover::before { opacity: 1; }
+  .project-icon {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .project-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .project-tag {
+    color: var(--accent-2);
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 1rem;
+  }
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .project-stack span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+
+  /* Beyond Code */
+  .beyond-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .interest-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    transition: all 0.25s ease;
+    cursor: default;
+  }
+  .interest-pill:hover {
+    border-color: var(--accent-warm);
+    transform: translateY(-3px);
+    background: var(--bg-elev);
+  }
+  .interest-emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .interest-label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* Achievements */
+  .achievements-list {
+    display: grid;
+    gap: 1rem;
+  }
+  .achievement {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.25s;
+  }
+  .achievement:hover {
+    border-color: var(--accent-warm);
+  }
+  .achievement-icon {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+  }
+  .achievement-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .achievement-desc {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  /* Education */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .edu-degree { font-weight: 700; margin-bottom: 0.5rem; }
+  .edu-school { color: var(--accent-2); font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .edu-year { font-family: 'JetBrains Mono', monospace; color: var(--text-faint); font-size: 0.85rem; }
+
+  /* Contact */
+  .contact {
+    text-align: center;
+    padding: 8rem 0;
+  }
+  .contact h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .contact-blurb {
+    color: var(--text-dim);
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    font-size: 1.1rem;
+  }
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 0.85rem;
+  }
+  footer .heart {
+    color: var(--accent);
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--bg-elev);
+      padding: 1.5rem;
+      gap: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-toggle { display: block; }
+    .container { padding: 0 1.25rem; }
+    section { padding: 4rem 0; }
+    .about-grid, .edu-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .timeline { padding-left: 1.5rem; }
+    .timeline-item::before { left: -2rem; }
+    .hero { padding: 7rem 0 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">&lt;aditya/&gt;</div>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#beyond">Beyond Code</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <p class="hero-greeting">// hello, world — I'm</p>
+    <h1>Aditya Bharighat.</h1>
+    <h2>I build <span class="gradient-text">scalable systems</span> & ship <span class="gradient-text">AI-powered products</span>.</h2>
+    <p class="hero-blurb">
+      Technical Lead with 9+ years of experience architecting high-performance web applications in the JavaScript/TypeScript ecosystem.
+      I own things end-to-end — from monorepo design and micro-frontends to AI agent pipelines and Kubernetes deployments.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <div class="hero-meta">
+      <span><span class="dot"></span>Available for opportunities</span>
+      <span>📍 Bengaluru, India</span>
+      <span>🏢 Moback Technologies</span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container reveal">
+    <p class="section-label">01 — About</p>
+    <h2 class="section-title">A bit about me.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a <strong>Technical Lead at Moback Technologies</strong>, where I've spent the last 9 years growing from intern to leading architecture decisions across 10+ production applications.
+        </p>
+        <p>
+          My focus is the <strong>JavaScript/TypeScript ecosystem</strong> — NestJS on the backend, Angular and React on the frontend — with deep work in API design, database optimization, micro-frontend architecture, and building <strong>production-ready AI features</strong>.
+        </p>
+        <p>
+          Lately I've been obsessed with <strong>AI Orchestration and Agent Mesh</strong>, building agent pipelines that automate complex CI/CD lifecycles and save my team 5–10 hours per week. I love owning the full stack — from PostgreSQL query plans to Kubernetes manifests to the last pixel of UI.
+        </p>
+        <p>
+          When I'm not coding, you'll find me hiking in the Western Ghats, photographing wildlife, playing the ghatam, or smashing a shuttle.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">9+</div>
+          <div class="stat-label">Years building production software</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Apps architected end-to-end</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Engineers mentored</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Hackathon trophy 🏆</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container reveal">
+    <p class="section-label">02 — Experience</p>
+    <h2 class="section-title">Where I've worked.</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3 class="timeline-role">Technical Lead</h3>
+        <p class="timeline-company">Moback Technologies India Pvt. Ltd. — Bengaluru</p>
+        <p class="timeline-meta">May 2024 — Present · 2 yrs 1 mo</p>
+        <ul class="timeline-bullets">
+          <li>Architected 10+ production apps end-to-end — monorepo, micro-frontends, i18n, CSS architecture, reusable component systems — applying SOLID principles to reduce maintenance overhead.</li>
+          <li>Built AI agent pipelines using AI Orchestration and Agent Mesh to automate CI/CD lifecycles, saving 5–10 hours of manual effort per week.</li>
+          <li>Led containerization with Docker & Kubernetes, managed image pipelines via JFrog Artifactory, and configured NGINX for routing and load balancing.</li>
+          <li>Mentored 5+ junior developers through code reviews, frontend standards, and architectural guidance.</li>
+          <li>Designed NestJS APIs backed by PostgreSQL, MongoDB, and Redis with a focus on query optimization, caching, and scalable data flow.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3 class="timeline-role">Senior Software Engineer</h3>
+        <p class="timeline-company">Moback Technologies India Pvt. Ltd. — Bengaluru</p>
+        <p class="timeline-meta">May 2021 — May 2024 · 3 yrs 1 mo</p>
+        <ul class="timeline-bullets">
+          <li>Migrated 6–10 Angular applications across major versions — resolving breaking changes, refactoring legacy code, and delivering each migration with minimal downtime.</li>
+          <li>Integrated NgRx and RxJS patterns across multiple SPAs, improving state predictability and cutting debug time on async workflows.</li>
+          <li>🏆 Won the company Hackathon (2024) as part of a 3-person team — rapid prototyping under pressure.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3 class="timeline-role">Software Engineer</h3>
+        <p class="timeline-company">Moback Technologies India Pvt. Ltd. — Bengaluru</p>
+        <p class="timeline-meta">Nov 2017 — May 2021 · 3 yrs 7 mos</p>
+        <ul class="timeline-bullets">
+          <li>Contributed full-stack features across client projects using Angular, Node.js, and PHP — building foundational expertise across the JavaScript stack.</li>
+          <li>Designed and optimized data layers with MySQL, MongoDB, and Redis.</li>
+          <li>Hands-on with NGINX configuration, deployment workflows, and cross-functional delivery.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3 class="timeline-role">Software Engineer Intern</h3>
+        <p class="timeline-company">Moback Technologies India Pvt. Ltd. — Bengaluru</p>
+        <p class="timeline-meta">Jul 2017 — Nov 2017 · 5 mos</p>
+        <ul class="timeline-bullets">
+          <li>Onboarded onto a PHP-based insight-driven application, ramping rapidly into Angular and Node.js.</li>
+          <li>Transitioned from intern to full-time contributor within 5 months.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3 class="timeline-role">Web Developer Intern</h3>
+        <p class="timeline-company">Aguai Solutions — Bengaluru</p>
+        <p class="timeline-meta">Jan 2017 — Jul 2017 · 7 mos</p>
+        <ul class="timeline-bullets">
+          <li>Built a Field Tracking System from scratch — PHP, Ajax, jQuery, MySQL — for remotely monitoring field employees. Delivered end-to-end independently.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container reveal">
+    <p class="section-label">03 — Toolkit</p>
+    <h2 class="section-title">My tech stack.</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-title">// Frontend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Angular 2+</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">NgRx</span>
+          <span class="skill-tag">RxJS</span>
+          <span class="skill-tag">Redux</span>
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS/SCSS</span>
+          <span class="skill-tag">Handlebars.js</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">// Backend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">NestJS</span>
+          <span class="skill-tag">REST API Design</span>
+          <span class="skill-tag">GraphQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">// Databases</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Redis</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">// DevOps & Cloud</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">AWS Lambda</span>
+          <span class="skill-tag">AWS EC2</span>
+          <span class="skill-tag">AWS S3</span>
+          <span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">CircleCI</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">NGINX</span>
+          <span class="skill-tag">JFrog Artifactory</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">// AI & Tooling</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Gen AI</span>
+          <span class="skill-tag">Agentic AI</span>
+          <span class="skill-tag">AI Orchestration</span>
+          <span class="skill-tag">Agent Mesh</span>
+          <span class="skill-tag">Jest</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">npm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container reveal">
+    <p class="section-label">04 — Selected Work</p>
+    <h2 class="section-title">Things I've built.</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">🌿</div>
+        <h3 class="project-name">Ayurvedic Community Platform</h3>
+        <p class="project-tag">// Full-stack · Solo build</p>
+        <p class="project-desc">
+          Built a full-stack community platform from scratch — owned the architecture, infrastructure, and feature delivery end-to-end. Designed for scale on AWS with caching and resilient APIs.
+        </p>
+        <div class="project-stack">
+          <span>Angular</span><span>·</span>
+          <span>NestJS</span><span>·</span>
+          <span>PostgreSQL</span><span>·</span>
+          <span>Redis</span><span>·</span>
+          <span>AWS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🏍️</div>
+        <h3 class="project-name">Ride In Sync</h3>
+        <p class="project-tag">// Vibe coding · Live on Play Store</p>
+        <p class="project-desc">
+          A real-time group ride tracking app — leader creates a session, riders join by code, everyone sees live GPS positions on a shared map with a proximity dashboard. Shipped from scratch to production, including app store publishing.
+        </p>
+        <div class="project-stack">
+          <span>Flutter</span><span>·</span>
+          <span>NestJS</span><span>·</span>
+          <span>PostGIS</span><span>·</span>
+          <span>Redis</span><span>·</span>
+          <span>Socket.io</span><span>·</span>
+          <span>FCM</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🤖</div>
+        <h3 class="project-name">AI Agent Pipelines</h3>
+        <p class="project-tag">// Internal · Production</p>
+        <p class="project-desc">
+          Designed and deployed AI agent pipelines on top of Agent Mesh and AI Orchestration to automate complex CI/CD lifecycles and internal business logic — saving the team 5–10 hours of manual effort weekly.
+        </p>
+        <div class="project-stack">
+          <span>Agentic AI</span><span>·</span>
+          <span>Node.js</span><span>·</span>
+          <span>GitHub Actions</span><span>·</span>
+          <span>Docker</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🧩</div>
+        <h3 class="project-name">Enterprise Micro-Frontends</h3>
+        <p class="project-tag">// Architecture · 10+ apps</p>
+        <p class="project-desc">
+          Architected monorepo + micro-frontend layouts for 10+ production apps with shared component systems, i18n, and CSS architecture — designed for long-term maintainability and team scalability.
+        </p>
+        <div class="project-stack">
+          <span>Angular</span><span>·</span>
+          <span>TypeScript</span><span>·</span>
+          <span>Monorepo</span><span>·</span>
+          <span>Module Federation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container reveal">
+    <p class="section-label">05 — Education</p>
+    <h2 class="section-title">Where I studied.</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Master of Computer Applications (MCA)</div>
+        <div class="edu-school">REVA ITM (VTU), Bengaluru</div>
+        <div class="edu-year">2016 — 2019</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
+        <div class="edu-school">Seshadripuram First Grade College, Bengaluru</div>
+        <div class="edu-year">2013 — 2016</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="container reveal">
+    <p class="section-label">06 — Off the Clock</p>
+    <h2 class="section-title">Beyond the code.</h2>
+    <p style="color: var(--text-dim); max-width: 640px; margin-bottom: 2.5rem;">
+      I believe a balanced mind makes for better engineering. Outside of work I chase elevation, frame wildlife, and keep rhythm.
+    </p>
+    <div class="beyond-grid">
+      <div class="interest-pill"><div class="interest-emoji">🥁</div><div class="interest-label">Ghatam & Flute</div></div>
+      <div class="interest-pill"><div class="interest-emoji">🥾</div><div class="interest-label">Hiking</div></div>
+      <div class="interest-pill"><div class="interest-emoji">📷</div><div class="interest-label">Wildlife Photography</div></div>
+      <div class="interest-pill"><div class="interest-emoji">🎬</div><div class="interest-label">Cinematography</div></div>
+      <div class="interest-pill"><div class="interest-emoji">✈️</div><div class="interest-label">Travelling</div></div>
+      <div class="interest-pill"><div class="interest-emoji">🏸</div><div class="interest-label">Badminton</div></div>
+      <div class="interest-pill"><div class="interest-emoji">🏐</div><div class="interest-label">Volleyball</div></div>
+    </div>
+
+    <h3 style="margin: 3.5rem 0 1.5rem; font-size: 1.5rem;">Achievements & Highlights</h3>
+    <div class="achievements-list">
+      <div class="achievement">
+        <div class="achievement-icon">🏆</div>
+        <div>
+          <div class="achievement-title">Hackathon Winner — Moback 2024</div>
+          <div class="achievement-desc">Won as part of a 3-person team. Rapid prototyping, problem-solving, and teamwork under pressure.</div>
+        </div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-icon">🎖️</div>
+        <div>
+          <div class="achievement-title">NCC 'A' & 'B' Certificate Holder</div>
+          <div class="achievement-desc">1 Karnataka Air Squadron NCC, Directorate Goa & Karnataka. Attended multiple national-level camps.</div>
+        </div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-icon">🎥</div>
+        <div>
+          <div class="achievement-title">Multimedia Director</div>
+          <div class="achievement-desc">Directed professional multimedia projects in association with Picture Precious.</div>
+        </div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-icon">🏐</div>
+        <div>
+          <div class="achievement-title">State-Level Volleyball Player</div>
+          <div class="achievement-desc">Participated in the State Level Inter School Volleyball Tournament (2005).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container reveal">
+    <p class="section-label">07 — Get in touch</p>
+    <h2>Let's build something great.</h2>
+    <p class="contact-blurb">
+      Whether you have a role to discuss, a product to architect, or just want to swap notes on AI agents and clean APIs — my inbox is open.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:adityabharighat@gmail.com" class="btn btn-primary">✉ adityabharighat@gmail.com</a>
+      <a href="https://linkedin.com/in/aditya-bharighat" target="_blank" rel="noopener" class="btn btn-ghost">in LinkedIn</a>
+      <a href="tel:+919916999688" class="btn btn-ghost">📞 +91 9916999688</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built by Aditya Bharighat · <span class="heart">♥</span> from Bengaluru</p>
+  <p style="margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">© <span id="year"></span> · adityabharighat.com</p>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile nav toggle
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') links.classList.remove('open');
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
